@@ -93,17 +93,33 @@ def listado():
                 print("Desempeño: Satisfactorio")
     else:
         print("No hay empleados registrados")
+def buscar_empleado():
+    print("Ingrese el código del empleado: ")
+    cod = input()
+    if cod in empleados:
+        print(f"Codigo: {cod}")
+        print(f"Nombre: {empleados[cod]['nombre']}")
+        print(f"Apellido: {empleados[cod]['apellido']}")
+        print(f"Departamento: {empleados[cod]['departamento']}")
+        print(f"Antiguedad: {empleados[cod]['antiguedad']}")
+        print(f"Punteo de puntualidad: {empleados[cod]['desempeño']['puntualidad']}")
+        print(f"Punteo de trabajo en equipo: {empleados[cod]['desempeño']['trabajo_equipo']}")
+        print(f"Punteo de productividad: {empleados[cod]['desempeño']['productividad']}")
 def menu():
     print("======MENÚ PRINCIPAL======")
     print("1. Agregar empleado")
     print("2. Listado de empleados")
     print("3. Buscar empleado")
-    print("4. Agregar observacion general")
+    print("4. Salir")
     print("Seleccione una opcion: ")
     opcion = input()
     if opcion == "1":
         agregar_empleados()
     elif opcion == "2":
         listado()
+    elif opcion == "3":
+        buscar_empleado()
+    elif opcion == "4":
+        exit()
 if __name__ == "__main__":
     menu()
