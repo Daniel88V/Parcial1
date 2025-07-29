@@ -44,3 +44,43 @@ def agregar_empleados():
                 break
             except ValueError:
                 print("Error, por favor ingresa un valor valido")
+        while True:
+            try:
+                productividad = int(input(f"Ingrese la calificacion de la productividad del empleado: "))
+                if productividad < 0:
+                    print("Error, la calificacion no puede ser negativa")
+                    continue
+                if productividad > 10:
+                    print("Error, la calificacion maxima es 10")
+                    continue
+                break
+            except ValueError:
+                print("Error, por favor ingresa un valor valido")
+        observacion_general = input(f"Ingrese la observacion general del empleado: ")
+        telefono = input(f"Ingrese el telefono del empleado: ")
+        correo = input(f"Ingrese el correo del empleado: ")
+        empleados[codigo] = {
+            "nombre": nombres,
+            "apellido": apellidos,
+            "departamento": departamento,
+            "antiguedad": antiguedad,
+            "desempeño": {
+                "puntualidad": puntualidad,
+                "trabajo_equipo": trabajo_equipo,
+                "productividad": productividad,
+            },
+            "contacto": {
+                "telefono": telefono,
+                "correo": correo
+            }
+        }
+def menu():
+    print("======MENÚ PRINCIPAL======")
+    print("1. Agregar empleado")
+    print("2. Agregar empleados")
+    print("3. Agregar productividad")
+    print("4. Agregar observacion general")
+    print("Seleccione una opcion: ")
+    opcion = input()
+    if opcion == "1":
+        agregar_empleados()
