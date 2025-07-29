@@ -73,15 +73,33 @@ def agregar_empleados():
                 "correo": correo
             }
         }
+def listado():
+    print("------Listado de los empleados------")
+    for codigo, datos in empleados.items():
+        print(f"Codigo: {codigo}")
+        print(f"Nombre: {datos['nombre']}")
+        print(f"Apellido: {datos['apellido']}")
+        print(f"Departamento: {datos['departamento']}")
+        print(f"Antiguedad: {datos['antiguedad']}")
+        print(f"Punteo de puntualidad: {datos["desempeño"]['puntualidad']}")
+        print(f"Punteo de trabajo en equipo: {datos["desempeño"]['trabajo_equipo']}")
+        print(f"Punteo de productividad: {datos['desempeño']["productividad"]}")
+        promedio = (datos['desempeño']['puntualidad'] + datos['desempeño']['trabajo_equipo'] + datos['desempeño']['productividad'])/3
+        if promedio < 7:
+            print("Desempeño: Mejorar")
+        else:
+            print("Desempeño: Satisfactorio")
 def menu():
     print("======MENÚ PRINCIPAL======")
     print("1. Agregar empleado")
-    print("2. Agregar empleados")
+    print("2. Listado de empleados")
     print("3. Agregar productividad")
     print("4. Agregar observacion general")
     print("Seleccione una opcion: ")
     opcion = input()
     if opcion == "1":
         agregar_empleados()
+    elif opcion == "2":
+        listado()
 if __name__ == "__main__":
     menu()
