@@ -7,6 +7,7 @@ def agregar_empleados():
         codigo = input(f"Ingrese el codigo del empleado: ")
         if codigo in empleados:
             print("Error, este empleado ya fue registrado")
+            return
         nombres= input(f"Ingrese el nombre del empleado(si el empleado posee dos nombres ingrese ambos): ")
         apellidos = input(f"Ingrese los apellidos del empleado: ")
         departamento = input(f"Ingrese el departamento del empleado: ")
@@ -75,25 +76,28 @@ def agregar_empleados():
         }
 def listado():
     print("------Listado de los empleados------")
-    for codigo, datos in empleados.items():
-        print(f"Codigo: {codigo}")
-        print(f"Nombre: {datos['nombre']}")
-        print(f"Apellido: {datos['apellido']}")
-        print(f"Departamento: {datos['departamento']}")
-        print(f"Antiguedad: {datos['antiguedad']}")
-        print(f"Punteo de puntualidad: {datos["desempeño"]['puntualidad']}")
-        print(f"Punteo de trabajo en equipo: {datos["desempeño"]['trabajo_equipo']}")
-        print(f"Punteo de productividad: {datos['desempeño']["productividad"]}")
-        promedio = (datos['desempeño']['puntualidad'] + datos['desempeño']['trabajo_equipo'] + datos['desempeño']['productividad'])/3
-        if promedio < 7:
-            print("Desempeño: Mejorar")
-        else:
-            print("Desempeño: Satisfactorio")
+    if empleados:
+        for codigo, datos in empleados.items():
+            print(f"Codigo: {codigo}")
+            print(f"Nombre: {datos['nombre']}")
+            print(f"Apellido: {datos['apellido']}")
+            print(f"Departamento: {datos['departamento']}")
+            print(f"Antiguedad: {datos['antiguedad']}")
+            print(f"Punteo de puntualidad: {datos["desempeño"]['puntualidad']}")
+            print(f"Punteo de trabajo en equipo: {datos["desempeño"]['trabajo_equipo']}")
+            print(f"Punteo de productividad: {datos['desempeño']["productividad"]}")
+            promedio = (datos['desempeño']['puntualidad'] + datos['desempeño']['trabajo_equipo'] + datos['desempeño']['productividad'])/3
+            if promedio < 7:
+               print("Desempeño: Mejorar")
+            else:
+                print("Desempeño: Satisfactorio")
+    else:
+        print("No hay empleados registrados")
 def menu():
     print("======MENÚ PRINCIPAL======")
     print("1. Agregar empleado")
     print("2. Listado de empleados")
-    print("3. Agregar productividad")
+    print("3. Buscar empleado")
     print("4. Agregar observacion general")
     print("Seleccione una opcion: ")
     opcion = input()
