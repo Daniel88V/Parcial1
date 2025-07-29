@@ -4,7 +4,7 @@ def agregar_empleados():
     cont = int(input())
     for i in range(cont):
         print(f"Empleado#{i+1}")
-        codigo = input(f"Ingrese el codigo del empleado: ")
+        codigo = input(f"Ingrese el codigo del empleado: ").upper()
         if codigo in empleados:
             print("Error, este empleado ya fue registrado")
             return
