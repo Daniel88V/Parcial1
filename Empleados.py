@@ -7,7 +7,6 @@ def agregar_empleados():
         codigo = input(f"Ingrese el codigo del empleado: ")
         if codigo in empleados:
             print("Error, este empleado ya fue registrado")
-            break
         nombres= input(f"Ingrese el nombre del empleado(si el empleado posee dos nombres ingrese ambos): ")
         apellidos = input(f"Ingrese los apellidos del empleado: ")
         departamento = input(f"Ingrese el departamento del empleado: ")
@@ -84,3 +83,5 @@ def menu():
     opcion = input()
     if opcion == "1":
         agregar_empleados()
+if __name__ == "__main__":
+    menu()
